@@ -1,0 +1,38 @@
+:root{--bg:#f6f8fa;--card:#ffffff;--accent:#2b6cb0;--muted:#666}
+*{box-sizing:border-box;font-family:Meiryo,Segoe UI,Helvetica,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:#111}
+.app{max-width:900px;margin:24px auto;padding:12px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+h1{font-size:1.4rem;margin:0}
+.card{background:var(--card);padding:12px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:12px}
+label{display:block;margin:8px 0;font-size:0.95rem}
+input,textarea{width:100%;padding:8px;border-radius:4px;border:1px solid #ddd}
+textarea{min-height:64px}
+.actions{display:flex;gap:8px;margin-top:8px}
+button{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer}
+.small{padding:6px 8px;font-size:0.85rem}
+.toolbar{display:flex;gap:8px;align-items:center}
+.toolbar input{flex:1;width:auto;min-width:0}
+.toolbar button{flex:0 0 auto}
+.pwRow{display:flex;gap:8px;align-items:center}
+.pwRow input{flex:1}
+.exportArea{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.modal{position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);z-index:50}
+.modal[hidden]{display:none}
+.modal:not([hidden]){display:flex}
+.modalContent{width:400px;max-width:90%}
+.meterBar{height:8px;background:#eee;border-radius:6px;margin-top:6px}
+.meterBar[data-score="0"]{background:linear-gradient(90deg,#eee 0%,#eee 100%)}
+.meterBar[data-score="1"]{background:linear-gradient(90deg,#ff6b6b 0%,#ff6b6b 100%)}
+.meterBar[data-score="2"]{background:linear-gradient(90deg,#ffb86b 0%,#ffb86b 100%)}
+.meterBar[data-score="3"]{background:linear-gradient(90deg,#c3e88d 0%,#c3e88d 100%)}
+.meterBar[data-score="4"]{background:linear-gradient(90deg,#4cd964 0%,#4cd964 100%)}
+.meterText{font-size:0.85rem;color:var(--muted);margin-top:6px}
+.list{display:flex;flex-direction:column;gap:8px}
+.entry{display:grid;grid-template-columns:1fr 160px 120px 80px;gap:8px;align-items:center;padding:8px;border-radius:6px;border:1px solid #eee}
+.entry .service{font-weight:600}
+.entry .meta{font-size:0.85rem;color:var(--muted)}
+.entry .actions{display:flex;gap:6px;justify-content:flex-end}
+.btn-ghost{background:#eee;color:#111}
+.error{color:#c00}
+@media(max-width:700px){.entry{grid-template-columns:1fr 120px;grid-template-rows:auto auto;}}

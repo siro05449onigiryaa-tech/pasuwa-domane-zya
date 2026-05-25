@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>パスワードマネージャー</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>パスワードマネージャー</h1>
+      <button id="logoutBtn" class="small" hidden>ログアウト</button>
+    </header>
+
+    <!-- マスターパスワード設定 / ログイン -->
+    <section id="authSection" class="card">
+      <div id="setMasterArea">
+        <h2>初回セットアップ：マスターパスワードを設定</h2>
+        <label>マスターパスワード
+          <input id="setMasterPassword" type="password" />
+          <div class="pwMeter"><div id="setPwMeter" class="meterBar"></div><div id="setPwText" class="meterText"></div></div>
+        </label>
+        <label>確認
+          <input id="setMasterPasswordConfirm" type="password" />
+        </label>
+        <div class="actions">
+          <button id="setMasterBtn">設定</button>
+          <button id="resetMasterBtn" class="small">マスター再設定/初期化</button>
+        </div>
+      </div>
+
+      <div id="loginArea" hidden>
+        <h2>ログイン</h2>
+        <label>マスターパスワード
+          <input id="loginPassword" type="password" />
+        </label>
+        <div class="actions">
+          <button id="loginBtn">ログイン</button>
+          <button id="resetMasterBtn2" class="small">マスター再設定/初期化</button>
+        </div>
+        <p id="loginError" class="error" hidden>パスワードが違います</p>
+      </div>
+    </section>
+
+    <!-- メイン画面 -->
+    <main id="mainSection" hidden>
+      <section class="card">
+        <div class="toolbar">
+          <input id="searchInput" placeholder="サービス名で検索" />
+          <button id="clearSearch" class="small">クリア</button>
+        </div>
+
+        <form id="entryForm">
+          <h3 id="formTitle">新しい登録</h3>
+          <input type="hidden" id="entryId" />
+          <label>サービス名
+            <input id="serviceName" required />
+          </label>
+          <label>ログインID
+            <input id="loginId" />
+          </label>
+          <label class="pwRow">パスワード
+            <input id="password" />
+            <button type="button" id="genPw" class="small">生成</button>
+          </label>
+          <label>メモ
+            <textarea id="memo"></textarea>
+          </label>
+          <div class="actions">
+            <button type="submit" id="saveBtn">保存</button>
+            <button type="button" id="cancelEdit" class="small" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h3>登録一覧</h3>
+        <div class="exportArea">
+          <button id="exportBtn" class="small">エクスポート</button>
+          <button id="importBtn" class="small">インポート</button>
+          <input id="importFile" type="file" accept="application/json" style="display:none" />
+        </div>
+        <div id="list" class="list"></div>
+      </section>
+    </main>
+
+    <!-- マスターパスワード再設定モーダル -->
+    <div id="resetModal" class="modal" hidden>
+      <div class="modalContent card">
+        <h3>マスターパスワード再設定</h3>
+        <label>現在のマスターパスワード
+          <input id="modalCurrentPw" type="password" />
+        </label>
+        <label>新しいマスターパスワード
+          <input id="modalNewPw" type="password" />
+          <div class="pwMeter"><div id="modalPwMeter" class="meterBar"></div><div id="modalPwText" class="meterText"></div></div>
+        </label>
+        <label>確認
+          <input id="modalNewPwConfirm" type="password" />
+        </label>
+        <div class="actions">
+          <button id="modalCancel" class="small btn-ghost">キャンセル</button>
+          <button id="modalSubmit" class="small">再設定</button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <small>動作: LocalStorage に保存（学習用デモ）</small>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
